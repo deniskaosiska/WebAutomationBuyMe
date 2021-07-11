@@ -5,17 +5,19 @@ import org.openqa.selenium.WebDriver;
 
 public class HomeScreen extends BasePage{
     public static WebDriver driver;
+    //Getting driver from SingeltonDriver
     public HomeScreen(){
         this.driver = SingletonDriver.getDriverInstance();
     }
-
+//Log in to site and fill credentianals
     public void logIn(){
-        new HomeScreen();
+        //new HomeScreen();
         clickElement(Constants.LogIn);
         sendKeysToElement(Constants.Mail, Constants.UserName);
         sendKeysToElement(Constants.Password, Constants.Pass);
         driver.findElement(By.cssSelector(".ember-view[placeholder='סיסמה']")).submit();
     }
+    //Pick any present on site
     public void pickPresent(){
         clickElement(By.xpath("//*[@id=\"ember978_chosen\"]/a"));
         clickElement(By.xpath("//*[@id=\"ember978_chosen\"]/div/ul/li[3]"));
