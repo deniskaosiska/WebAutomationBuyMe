@@ -17,8 +17,11 @@ public class SelectBusiness extends BasePage {
     }
     //Pick business after log in
     public void pickBusiness(){
-        clickElement(By.xpath("//*[@id=\"ember1645\"]/div[2]"));
-        clickElement(By.id("ember1824"));
+       // clickElement(By.xpath("//*[@id=\"ember1645\"]/div[2]"));
+        clickElement(By.cssSelector("a[href='https://buyme.co.il/package/348356/1005727'"));
+      //  clickElement(By.cssSelector(".ember-view bm-btn"));
+
+
     }
 
 }

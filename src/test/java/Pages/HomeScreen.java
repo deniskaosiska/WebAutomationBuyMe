@@ -27,5 +27,9 @@ public class HomeScreen extends BasePage{
         clickElement(By.xpath("//*[@id=\"ember1003_chosen\"]/div/ul/li[5]"));
         clickElement(By.xpath("//*[@id=\"ember1038\"]"));
     }
+    public void logOut(){
+        clickElement(By.cssSelector("img[class='arrow']"));
+        clickElement(By.cssSelector("a[class='dropdown-item']"));
+    }
 
 }

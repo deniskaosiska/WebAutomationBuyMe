@@ -1,7 +1,9 @@
 package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class SingletonDriver {
 
     private static WebDriver driver;
+
 //Singelton of driver and getting info from data.xml
     public static WebDriver getDriverInstance(){
         if(driver == null){
@@ -21,6 +24,7 @@ public class SingletonDriver {
                 if(BrowserType.equals("Chrome")){
                     System.setProperty("webdriver.chrome.driver", "C:\\Users\\Denis.Kozyra\\Downloads\\chromedriver_win32 (2)\\chromedriver.exe");
                     driver = new ChromeDriver();
+
                     driver.get(URL);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -48,4 +52,5 @@ public class SingletonDriver {
         doc.getDocumentElement().normalize();
         return doc.getElementsByTagName(keyName).item(0).getTextContent();
     }
+
 }

@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class SenderAndReceiverScreen extends BasePage{
@@ -12,20 +13,27 @@ public class SenderAndReceiverScreen extends BasePage{
         this.driver=SingletonDriver.getDriverInstance();
     }
     //Fill receiver data info
-    public void receiverInfo(){
-        clickElement(By.xpath("//*[@id=\"ember1733\"]"));
-        sendKeysToElement(By.id("friendName"), "אסתר");
-        clickElement(By.xpath("//*[@id=\"ember1821\"]/div/div[1]/span"));
-        clickElement(By.xpath("//*[@id=\"ember1867\"]/span"));
-        sendKeysToElement(By.xpath("//*[@id=\"ember1750\"]/textarea"), "מזל טוב לחתונה");
-        //Place to upload picture
-        driver.findElement(By.xpath("//*[@id=\"ember1733\"]")).submit();
+    public void receiverInfo() throws InterruptedException {
+        clickElement(By.cssSelector("span[class='text'"));
+        driver.findElement(By.cssSelector("input[maxlength='25']")).clear();
+        sendKeysToElement(By.cssSelector("input[maxlength='25']"), "אסתר");
+        clickElement(By.cssSelector("span[class='selected-text'"));
+        clickElement(By.cssSelector("li[value='14']"));
+        driver.findElement(By.cssSelector("textarea[rows='4']")).clear();
+        sendKeysToElement(By.cssSelector("textarea[rows='4']"), "מזל טוב לחתונה");
+        WebElement UploadImg = driver.findElement(By.cssSelector("input[name='logo']"));
+        UploadImg.sendKeys("C:\\Users\\Denis.Kozyra\\OneDrive - xcircular.com\\Desktop\\125.jpg");
+        //assertReceiverName();
+        Thread.sleep(5000);
+        driver.findElement(By.cssSelector("button[type='submit']")).submit();
     }
     //Fill sender data info
     public void senderInfo(){
-        clickElement(By.xpath("//*[@id=\"ember1906\"]/div[2]/div[1]/svg/path[2]"));
-        sendKeysToElement(By.xpath("//*[@id=\"email\"]"),Constants.UserName);
-        sendKeysToElement(By.xpath("//*[@id=\"ember1926\"]"),"דניס");
+        clickElement(By.cssSelector("svg[gtm='method-email']"));
+        sendKeysToElement(By.cssSelector("input[id='email']"),Constants.UserName);
+        sendKeysToElement(By.cssSelector("input[type='text']"),"דניס");
+       // assertSenderName();
+        clickElement(By.cssSelector("button[type='submit']"));
     }
     //Assert sender name
     public void assertSenderName(){
@@ -34,7 +42,7 @@ public class SenderAndReceiverScreen extends BasePage{
     }
     //Assert receiver name
     public void assertReceiverName(){
-        String ReceiverName = driver.findElement(By.id("friendName")).getText();
+        String ReceiverName = driver.findElement(By.cssSelector("input[maxlength='25']")).getText();
         Assert.assertEquals(ReceiverName, "אסתר");
     }
 }

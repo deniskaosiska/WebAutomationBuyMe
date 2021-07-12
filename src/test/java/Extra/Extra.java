@@ -1,3 +1,4 @@
+package Extra;
 import Pages.*;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -15,9 +16,10 @@ public class Extra extends BasePage {
     }
     // Getting size of spinner
     public void spinnerSize(){
-
-    System.out.println(driver.findElement(By.xpath("//*[@id=\"app-loading-img\"]/div")).getRect().getWidth());
-    System.out.println(driver.findElement(By.xpath("//*[@id=\"app-loading-img\"]/div")).getRect().getHeight());
+    WebElement spinner = driver.findElement(By.xpath("//*[@id=\"app-loading-img\"]/div"));
+    Dimension spinnerDim = spinner.getSize();
+    System.out.println(spinner.getRect().getWidth());
+    System.out.println(spinner.getRect().getHeight());
 }
         public void assertHomeScreen(){
 
@@ -31,8 +33,8 @@ public class Extra extends BasePage {
         }
 
         public void scrollPage() throws IOException {
-            SelectBusiness selectBusiness = new SelectBusiness();
-            selectBusiness.pickBusiness();
+//            SelectBusiness selectBusiness = new SelectBusiness();
+//            selectBusiness.pickBusiness();
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -40,6 +42,13 @@ public class Extra extends BasePage {
             FileUtils.copyFile(scrFile, new File("element-screenshot"+ timestamp()+".png"));
         }
 
+        public void colorStepName(){
+        HomeScreen homeScreen = new HomeScreen();
+        SelectBusiness selectBusiness = new SelectBusiness();
+        homeScreen.pickPresent();
+        selectBusiness.pickBusiness();
+        System.out.println(driver.findElement(By.cssSelector("div[class='label bottom-xs']")).getCssValue("color"));
+    }
 
 }
 
