@@ -105,11 +105,11 @@ public class MainTest  {
         }
     }
     //Getting size of spinner. I tried to find how can I catch some element before disappear, actually using explacity/fluent, but i didn't..
-//    @Test
-//    public void getSizeOfSpinner(){
-//        Extra extra = new Extra();
-//        extra.spinnerSize();
-//    }
+    @Test
+    public void getSizeOfSpinner(){
+        Extra extra = new Extra();
+        extra.spinnerSize();
+    }
     //Assert Log error of Log in failed
     @Test
     public void assertErrorMessageLogIn(){
