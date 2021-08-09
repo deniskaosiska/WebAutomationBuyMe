@@ -6,13 +6,10 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import java.io.IOException;
+
 
 
 
@@ -113,7 +110,7 @@ public class MainTest  {
     //Assert Log error of Log in failed
     @Test
     public void assertErrorMessageLogIn(){
-        test.log(Status.INFO, "Assert Log error of Log in failed");
+        test.log(Status.INFO, "Assert Log error if Log in failed");
         try {
         extra.assertHomeScreen();
         test.log(Status.PASS, "Test is successful");

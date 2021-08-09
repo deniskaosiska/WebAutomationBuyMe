@@ -9,7 +9,7 @@ public class HomeScreen extends BasePage{
     public HomeScreen(){
         this.driver = SingletonDriver.getDriverInstance();
     }
-//Log in to site and fill credentianals
+//Log in to site and fill credentinals
     public void logIn(){
         //new HomeScreen();
         clickElement(Constants.LogIn);
